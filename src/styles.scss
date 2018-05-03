@@ -1,0 +1,24 @@
+@import 'assets/normalize.css';
+/* You can add global styles to this file, and also import other style files */
+/*
+deeppurple-amber.css
+indigo-pink.css
+pink-bluegrey.css
+purple-green.css
+
+*/
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+body{
+    background: rgb(250, 250, 250);
+}
+
+.mat-nav-list .mat-list-item .mat-list-item-content{
+    padding: 0 30px!important;
+    // font-weight: bold;
+}
+
+

@@ -1,0 +1,85 @@
+<div class="policy-sys-list">
+  <mat-card class="example-card query-card">
+    <mat-card-content>
+      <div class="example-container">
+
+        <mat-form-field class="field-item">
+          <mat-select placeholder="年份" [(value)]="year">
+            <!-- <mat-option>无</mat-option> -->
+            <mat-option [value]="y" *ngFor="let y of years">{{y}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="field-item">
+          <mat-select placeholder="月份" [(value)]="month">
+            <mat-option [value]="m" *ngFor="let m of months">{{m}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" (click)="queryData()">按时间查询</button>
+
+       
+        <div class="split"></div>
+
+        <button mat-raised-button color="primary" (click)="queryTotalData()">按总数查询</button>
+
+        <button mat-raised-button color="accent" (click)="exportData()" class="new-policy-btn">导出报表</button>
+
+
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+
+  <mat-card class="example-card">
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+
+
+      <mat-toolbar color="basic" class="result-title">
+        查询结果
+      </mat-toolbar>
+
+
+
+      <table class="table">
+        <tr class="header">
+          <td>代理人名称</td>
+          <td>代理人手机</td>
+          <td>开户数</td>
+          <td>入金数</td>
+          <td>CPA数</td>
+          <td>点差数($)</td>
+        </tr>
+        <tr *ngFor="let item of data">
+          <td>{{item.mbNickName}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.registCount}}</td>
+          <td>{{item.depositUserCount}}</td>
+          <td>{{item.cpaCount}}</td>
+          <td>{{item.revenues}}</td>
+    
+          
+        </tr>
+        <tr *ngIf="loading">
+          <td colspan="6">
+            <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate"></mat-progress-spinner>
+          </td>
+        </tr>
+        <tr *ngIf="data.length==0&&!loading">
+          <td colspan="6">
+            暂无数据
+          </td>
+        </tr>
+      </table>
+
+      <!-- <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [length]="dataLength" (page)="pageEvent($event)">
+      </mat-paginator> -->
+    </mat-card-content>
+  </mat-card>
+
+
+
+</div>

@@ -1,0 +1,138 @@
+
+//gseven css
+.example-container {
+    // display: flex;
+    // flex-direction: row;
+    font-size: 15px;
+    .mat-form-field {
+        // flex: 1;
+        margin: 10px;
+        width: 120px;
+    }
+    label {
+        margin: 10px;
+    }
+}
+
+.example-card {
+    margin: 15px auto;
+}
+.query-card{
+    margin-top: 50px;
+    padding: 24px 10px;
+}
+
+.mat-paginator{
+    font-size: 15px;
+}
+
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+.mat-header-cell,.mat-cell{
+    font-size: 15px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    font-size: 16px;
+
+    height: auto;
+}
+.icon-box{
+    overflow: hidden;
+    margin: 15px 0 5px 0;
+}
+.icon-item{
+    float: left;
+    margin: 10px;
+    line-height: 22px;
+    color:#666;
+    img{
+        width: 22px;
+        position: relative;
+        top: 4px;
+        margin-right: 4px;
+    }
+}
+
+.export-btn{
+    float: right;
+}
+.result-title{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    padding: 6px 12px;
+}
+
+.table{
+    width: calc(100% - 0px);
+    color: #666;
+    border-collapse: collapse;
+    .header{
+        td{
+            font-size: 15px;
+            height: 24px;
+            padding: 7px;
+            color: #222;
+            background: #fafafa;
+            // border: 1px solid #aaa;
+        }
+    }
+    td{
+        border: 1px solid #ccc;
+        // padding: 5px;
+        text-align: center;
+        height: 30px;
+        font-size: 14px;
+        padding: 4px;
+        .icon{
+            width: 24px;
+        }
+    }
+}
+
+.example-margin{
+    margin: 50px auto;
+}
+.new-policy-btn{
+   margin-left: 10px;
+}
+
+// dialog
+
+
+.mat-dialog-title{
+    text-align: center;
+}
+.mat-dialog-actions{
+    display: flex;
+    margin-bottom: -4px;
+    .mat-button,.mat-raised-button{
+        flex:1;
+    }
+}
+
+.dialog-form{
+    padding: 20px 10px;
+    .mat-radio-group{
+        display: flex;
+        align-items: center;
+        .mat-radio-button{
+            flex: 1;
+        }
+    }
+}
+
+.split{
+    border-right: 1px solid #aaa;
+    margin: 0 40px;
+    display: inline-block;
+    width: 0;
+    height: 40px;
+    position: relative;
+    top: 15px;
+}

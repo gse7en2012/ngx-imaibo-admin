@@ -1,0 +1,50 @@
+.main {
+    /* max-width: 1400px;
+  margin: 20px auto; */
+  /* margin-top:20px;  */
+}
+
+
+
+.example-container {
+    display: flex;
+    flex: 1;
+    margin: 15px;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.example-right-align {
+    text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 16px;
+    background: #3f51b5;
+    color: rgba(255, 255, 255, 0.87);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
+    height: 50px;
+    font-size: 20px;
+    position: relative;
+    z-index: 9;
+}

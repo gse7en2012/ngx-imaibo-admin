@@ -1,0 +1,36 @@
+<mat-card class="example-card">
+
+
+
+  <mat-progress-bar mode="indeterminate" class="progress" *ngIf="loading"></mat-progress-bar>
+  <mat-card-header>
+    <mat-card-title>登录系统</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="用户名" [(ngModel)]="user" [formControl]="userFormControl" >
+        <mat-error *ngIf="userFormControl.hasError('required')">
+          请输入
+          <strong>用户名</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="密码" [(ngModel)]="pass" type="password" [formControl]="passFormControl">
+        <mat-error *ngIf="passFormControl.hasError('required')">
+          请输入
+          <strong>密码</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+
+
+
+  </mat-card-content>
+
+  <button mat-raised-button color="primary" class="login-btn" (click)="login()" *ngIf="!loading">登录</button>
+  <button mat-raised-button disabled class="login-btn" *ngIf="loading">正在登录</button>
+
+</mat-card>
