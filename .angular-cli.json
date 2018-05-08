@@ -21,7 +21,12 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+		  "../node_modules/moment/min/moment.min.js",
+		  "../node_modules/echarts/dist/echarts.min.js",
+		  "../src/assets/walden.js",
+		  "../src/assets/essos.js"
+	  ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

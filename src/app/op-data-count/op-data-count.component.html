@@ -1,0 +1,82 @@
+<div>
+	<div class="mask" [hidden]="!loading">
+		<mat-spinner color="accent"></mat-spinner>
+	</div>
+
+	<div class="block" style="padding-bottom: 0;">
+
+		<div class="datepicker">
+			<span>日期范围：</span>
+			<my-date-picker name="mydateStart" [options]="myDatePickerOptions" [(ngModel)]="startTime" (dateChanged)="onSDateChanged($event)"></my-date-picker>
+			<span>至</span>
+			<my-date-picker name="mydateEnd" [options]="myDatePickerOptions" [(ngModel)]="endTime" (dateChanged)="onEDateChanged($event)"></my-date-picker>
+
+			<mat-form-field>
+				<input matInput placeholder="博主UID/昵称" [(ngModel)]="keyWord">
+			</mat-form-field>
+
+
+			<button mat-raised-button color="accent" (click)="getData()" class="query-btn">查询</button>
+		</div>
+
+
+
+		<mat-button-toggle-group #group="matButtonToggleGroup">
+			<mat-button-toggle value="left" (click)="chooseDay('d7')" [checked]=true>最近7天</mat-button-toggle>
+			<mat-button-toggle value="center" (click)="chooseDay('m1')">最近30天</mat-button-toggle>
+			<mat-button-toggle value="right" (click)="chooseDay('m2')">最近60天</mat-button-toggle>
+		</mat-button-toggle-group>
+
+	</div>
+
+
+	<div class="block">
+		<h4>数据明细</h4>
+		<div style="clear: both;">
+			<button mat-raised-button color="accent" (click)="exportData()" class="export-btn">导出数据</button>
+			<table class="table">
+				<tr class="header">
+					<td>博主UID</td>
+					<td>博主昵称</td>
+					<td>联系方式</td>
+					<td>营收额</td>
+					<td>付费粉丝</td>
+					<td>新增付费粉丝（平台首付）</td>
+					<td>新增付费粉丝（非平台首付）</td>
+					<td>VIP文章</td>
+					<td>VIP直播</td>
+					<td>操作</td>
+				</tr>
+				<tr *ngIf="details.length==0">
+					<td colspan="10">没有数据</td>
+				</tr>
+				<tr *ngIf="details.length!=0">
+					<td colspan="3">合计</td>
+					<td>{{count.incomeValue}}</td>
+					<td>{{count.incomeFans}}</td>
+					<td>{{count.incomeNewFansWp}}</td>
+					<td>{{count.incomeNewFans}}</td>
+					<td>{{count.positiveVipArticle}}</td>
+					<td>{{count.positiveVipLive}}</td>
+					<td></td>
+				</tr>
+				<tr *ngFor="let item of details">
+					<td>{{item.uid}}</td>
+					<td>{{item.uname}}</td>
+					<td>{{item.mobile}}</td>
+					<td>{{item.incomeValue}}</td>
+					<td>{{item.incomeFans}}</td>
+					<td>{{item.incomeNewFansWp}}</td>
+					<td>{{item.incomeNewFans}}</td>
+					<td>{{item.positiveVipArticle}}</td>
+					<td>{{item.positiveVipLive}}</td>
+					<td>
+						<a mat-raised-button color="accent" [routerLink]="['./'+item.uid]" [queryParams]="{uname: item.uname}" class="query-btn">查看详情</a>
+					</td>
+				</tr>
+			</table>
+			<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [length]="dataLength" (page)="pageEvent($event)">
+			</mat-paginator>
+		</div>
+	</div>
+</div>

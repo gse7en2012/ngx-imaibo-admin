@@ -47,7 +47,13 @@ export class AppService {
     'editUserRole': '/ydt/api/bps/roleUser/updateRoleUser',
     'getUserRoleChangelog': '/ydt/api/bps/roleUser/roleUserModificationRecord',
 
-    'findSubAgentData': '/ydt/api/partner/findSubagentData'
+    'findSubAgentData': '/ydt/api/partner/findSubagentData',
+
+    //kol api
+	'findMenus': '/ydt/api/mbbs/index/findMenuCodes',
+	'kolAll':'/ydt/api/mbbs/kol/all',
+	'kolCount':'/ydt/api/mbbs/kol/find',
+	'kolOne':'/ydt/api/mbbs/kol/findOne'
   };
 
 
@@ -168,6 +174,13 @@ export class AppService {
     return this.cookieService.get('BPSUSERTOKEN')
   }
 
+  setMenuCookie(json){
+	this.cookieService.putObject('im_kol_menu',json);
+  }
+  getMenuCookie(){
+	return this.cookieService.getObject('im_kol_menu');
+  }
+
   saveRemark(id, remark) {
     return this.gsevenRequestViaPost('remark', {
       id: id,
@@ -261,6 +274,24 @@ export class AppService {
       uri += '&date=' + date;
     }
     return uri;
+  }
+
+
+  //kol api start
+  findUserMenus() {
+    return this.gsevenRequestViaGet('findMenus');
+  }
+
+  getKolAllData(opts){
+	return this.gsevenRequestViaGet('kolAll',opts);
+  }
+
+  getKolAllCount(opts){
+	return this.gsevenRequestViaGet('kolCount',opts);
+  }
+
+  getKolOneCount(opts){
+	  return this.gsevenRequestViaGet('kolOne',opts)
   }
 
 }

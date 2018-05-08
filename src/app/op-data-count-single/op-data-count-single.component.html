@@ -1,0 +1,78 @@
+<div>
+	<div class="mask" [hidden]="!loading">
+		<mat-spinner color="accent"></mat-spinner>
+	</div>
+
+	<div class="block">
+		<button mat-raised-button (click)="goBack()">返回</button>
+		<p class="uname">播主-{{uname}}的数据统计</p>
+	</div>
+	<div class="block" style="padding-bottom: 0;">
+
+		<div class="datepicker">
+			<span>日期范围：</span>
+			<my-date-picker name="mydateStart" [options]="myDatePickerOptions" [(ngModel)]="startTime" (dateChanged)="onSDateChanged($event)"></my-date-picker>
+			<span>至</span>
+			<my-date-picker name="mydateEnd" [options]="myDatePickerOptions" [(ngModel)]="endTime" (dateChanged)="onEDateChanged($event)"></my-date-picker>
+
+			<!-- <mat-form-field>
+				<input matInput placeholder="博主UID/昵称" [(ngModel)]="keyWord">
+			</mat-form-field> -->
+
+			<button mat-raised-button color="accent" (click)="getData()" class="query-btn">查询</button>
+
+		</div>
+
+
+		<mat-button-toggle-group #group="matButtonToggleGroup">
+			<mat-button-toggle value="left" (click)="chooseDay('d7')" [checked]=true>最近7天</mat-button-toggle>
+			<mat-button-toggle value="center" (click)="chooseDay('m1')">最近30天</mat-button-toggle>
+			<mat-button-toggle value="right" (click)="chooseDay('m2')">最近60天</mat-button-toggle>
+		</mat-button-toggle-group>
+
+	</div>
+
+
+	<div class="block">
+		<h4>整体趋势</h4>
+		<mat-button-toggle-group #group="matButtonToggleGroup">
+			<mat-button-toggle value="left" (click)="chooseType('d')" [checked]=true>日</mat-button-toggle>
+			<mat-button-toggle value="center" (click)="chooseType('w')">周</mat-button-toggle>
+			<mat-button-toggle value="right" (click)="chooseType('m')">月</mat-button-toggle>
+		</mat-button-toggle-group>
+
+		<div echarts [options]="chartOpts" class="chart" theme="essos" *ngIf="!noChartData"></div>
+		<p *ngIf="noChartData" class="no-data-tips">暂无图表数据</p>
+	</div>
+	<div class="block">
+		<h4>数据明细</h4>
+		<div style="clear: both;">
+			<button mat-raised-button color="accent" (click)="exportData()" class="export-btn">导出数据</button>
+			<table class="table">
+				<tr class="header">
+					<td>日期</td>
+					<td>营收额</td>
+					<td>付费粉丝</td>
+					<td>新增付费粉丝（平台首付）</td>
+					<td>新增付费粉丝（非平台首付）</td>
+					<td>VIP文章</td>
+					<td>VIP直播</td>
+				</tr>
+				<tr *ngIf="details.length==0">
+					<td colspan="7">没有数据</td>
+				</tr>
+				<tr *ngFor="let item of details">
+					<td>{{item.rdate}}</td>
+					<td>{{item.incomeValue}}</td>
+					<td>{{item.incomeFans}}</td>
+					<td>{{item.incomeNewFansWp}}</td>
+					<td>{{item.incomeNewFans}}</td>
+					<td>{{item.positiveVipArticle}}</td>
+					<td>{{item.positiveVipLive}}</td>
+				</tr>
+			</table>
+			<mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [length]="dataLength" (page)="pageEvent($event)">
+			</mat-paginator>
+		</div>
+	</div>
+</div>

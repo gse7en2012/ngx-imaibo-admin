@@ -1,20 +1,22 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened="true">
+<mat-sidenav-container >
+	<mat-sidenav #sidenav mode="side" opened="true" [ngStyle]="{'min-height': minHeight}">
+		<!-- <mat-nav-list>
+			<mat-divider></mat-divider>
+			<a mat-list-item routerLinkActive="cur" [routerLink]="['data']" color="accent">KOL运营数据</a>
+			<mat-divider></mat-divider>
+		</mat-nav-list> -->
 
-    <mat-nav-list>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLinkActive="cur" [routerLink]="['business']">拓展数据</a>
+		<mat-nav-list *ngFor="let menu of menuList" >
+			<mat-divider></mat-divider>
+			<a mat-list-item routerLinkActive="cur" [routerLink]="[menu.link]" color="accent">{{menu.name}}</a>
+			<mat-divider></mat-divider>
+		</mat-nav-list>
 
-    </mat-nav-list>
+	</mat-sidenav>
 
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <div class="ctx">
-      <router-outlet></router-outlet>
-
-    </div>
-
-
-  </mat-sidenav-content>
+	<mat-sidenav-content>
+		<mat-card>
+			<router-outlet></router-outlet>
+		</mat-card>
+	</mat-sidenav-content>
 </mat-sidenav-container>

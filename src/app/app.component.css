@@ -4,7 +4,9 @@
   /* margin-top:20px;  */
 }
 
-
+.title{
+	flex:1;
+}
 
 .example-container {
     display: flex;
@@ -40,11 +42,13 @@ input.example-right-align {
     -ms-flex-align: center;
     align-items: center;
     padding: 8px 16px;
-    background: #3f51b5;
-    color: rgba(255, 255, 255, 0.87);
+    /* background: #3f51b5;
+    color: rgba(255, 255, 255, 0.87); */
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, rgba(0, 0, 0, 0.12) 0px 1px 18px 0px;
     height: 50px;
     font-size: 20px;
     position: relative;
-    z-index: 9;
+	z-index: 9;
+	background: #ffd740;
+	color: rgba(0,0,0,.87);
 }
